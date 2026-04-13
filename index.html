@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alter HUB — A Studio of Brand Provenance</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Inter+Tight:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: { brand: { green: "#064E3B" } },
+        fontFamily: {
+          serif: ["'Cormorant Garamond'", "serif"],
+          sans: ["'Inter Tight'", "ui-sans-serif", "system-ui"],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter Tight', ui-sans-serif, system-ui; font-weight: 300; }
+  .font-serif-display { font-family: 'Cormorant Garamond', serif; font-weight: 300; }
+  ::selection { background: #064E3B; color: #fafaf9; }
+  .grain {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  .pillar-card:hover .pillar-rule { width: 100%; }
+  .pillar-rule { transition: width 0.7s ease; }
+  .service-row:hover .service-name { color: #064E3B; }
+  .service-row:hover .service-arrow { color: #064E3B; transform: rotate(12deg); }
+  .service-name, .service-arrow { transition: all 0.5s ease; }
+  .cta-btn:hover .cta-arrow { transform: translate(2px, -2px); }
+  .cta-arrow { transition: transform 0.3s ease; }
+</style>
+</head>
+<body class="bg-[#0A0A0A] text-stone-200 antialiased">
+
+<div class="grain pointer-events-none fixed inset-0 opacity-[0.04] z-50 mix-blend-overlay"></div>
+
+<!-- NAV -->
+<header class="fixed top-0 left-0 right-0 z-40 backdrop-blur-md bg-[#0A0A0A]/70 border-b border-white/[0.06]">
+  <div class="max-w-[1400px] mx-auto px-8 py-5 flex items-center justify-between">
+    <div class="flex items-center gap-2 tracking-[0.3em] text-xs uppercase">
+      <span class="w-1.5 h-1.5 bg-brand-green rounded-full"></span>
+      <span>Alter / HUB</span>
+    </div>
+    <nav class="hidden md:flex items-center gap-10 text-xs uppercase tracking-[0.2em] text-stone-400">
+      <a href="#pillars" class="hover:text-stone-100 transition">Pillars</a>
+      <a href="#services" class="hover:text-stone-100 transition">Services</a>
+      <a href="#contact" class="hover:text-stone-100 transition">Engage</a>
+    </nav>
+    <div class="text-[10px] tracking-[0.3em] text-stone-500 uppercase">EST · MMXXV</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative pt-44 pb-32 px-8">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="flex items-center gap-4 mb-12 text-[10px] tracking-[0.4em] uppercase text-stone-500">
+      <span class="w-8 h-px bg-brand-green inline-block"></span>
+      <span>A Studio of Brand Provenance</span>
+    </div>
+
+    <h1 class="font-serif-display italic text-[12vw] md:text-[9vw] leading-[0.88] tracking-[-0.04em] text-stone-50">
+      Where lineage<br />
+      <span class="text-brand-green">becomes</span> leverage.
+    </h1>
+
+    <div class="mt-16 grid md:grid-cols-12 gap-8 items-end">
+      <p class="md:col-span-5 md:col-start-7 text-stone-400 text-lg leading-relaxed">
+        Alter HUB is a strategic design practice for founders who refuse the generic. We excavate the origin of a brand and translate it into systems, films, and arguments that compound over time.
+      </p>
+    </div>
+
+    <div class="mt-20 flex flex-wrap items-center gap-6 text-xs tracking-[0.3em] uppercase">
+      <a href="#contact" class="cta-btn group inline-flex items-center gap-3 px-6 py-4 border border-brand-green/40 hover:border-brand-green hover:bg-brand-green/10 transition">
+        Begin a Provenance Audit
+        <svg class="cta-arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <span class="text-stone-600 normal-case tracking-normal">— Selectively accepting Q3 engagements</span>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars" class="px-8 py-32 border-t border-white/[0.06]">
+  <div class="max-w-[1400px] mx-auto">
+    <div class="flex justify-between items-baseline mb-20">
+      <h2 class="text-xs tracking-[0.4em] uppercase text-stone-500">§ The Three Pillars</h2>
+      <span class="text-xs text-stone-600 tracking-[0.2em]">— 03 / Doctrines</span>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-px bg-white/[0.06]">
+      <!-- Creativity -->
+      <div class="pillar-card group bg-[#0A0A0A] p-10 md:p-12 hover:bg-[#0d1410] transition-colors duration-700 min-h-[420px] flex flex-col">
+        <div class="flex justify-between items-start mb-16">
+          <svg class="w-7 h-7 text-brand-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          <span class="text-[10px] tracking-[0.3em] text-stone-600">01</span>
+        </div>
+        <h3 class="font-serif-display italic text-5xl text-stone-50 mb-6 tracking-tight">Creativity</h3>
+        <p class="text-stone-400 leading-relaxed text-sm flex-grow">Visual systems engineered as artifacts. Every frame considered, every silence intentional.</p>
+        <div class="pillar-rule mt-10 h-px w-12 bg-brand-green"></div>
+      </div>
+
+      <!-- Provenance -->
+      <div class="pillar-card group bg-[#0A0A0A] p-10 md:p-12 hover:bg-[#0d1410] transition-colors duration-700 min-h-[420px] flex flex-col">
+        <div class="flex justify-between items-start mb-16">
+          <svg class="w-7 h-7 text-brand-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <span class="text-[10px] tracking-[0.3em] text-stone-600">02</span>
+        </div>
+        <h3 class="font-serif-display italic text-5xl text-stone-50 mb-6 tracking-tight">Provenance</h3>
+        <p class="text-stone-400 leading-relaxed text-sm flex-grow">A brand's lineage is its leverage. We trace the roots before we draw the canopy.</p>
+        <div class="pillar-rule mt-10 h-px w-12 bg-brand-green"></div>
+      </div>
+
+      <!-- Strategy -->
+      <div class="pillar-card group bg-[#0A0A0A] p-10 md:p-12 hover:bg-[#0d1410] transition-colors duration-700 min-h-[420px] flex flex-col">
+        <div class="flex justify-between items-start mb-16">
+          <svg class="w-7 h-7 text-brand-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          <span class="text-[10px] tracking-[0.3em] text-stone-600">03</span>
+        </div>
+        <h3 class="font-serif-display italic text-5xl text-stone-50 mb-6 tracking-tight">Strategy</h3>
+        <p class="text-stone-400 leading-relaxed text-sm flex-grow">Positioning carved from market gaps. Decisions defended by data, delivered with restraint.</p>
+        <div class="pillar-rule mt-10 h-px w-12 bg-brand-green"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="px-8 py-32 border-t border-white/[0.06]">
+  <div class="max-w-[1400px] mx-auto grid md:grid-cols-12 gap-16">
+    <div class="md:col-span-4">
+      <h2 class="text-xs tracking-[0.4em] uppercase text-stone-500 mb-8">§ Disciplines</h2>
+      <p class="font-serif-display italic text-3xl text-stone-300 leading-snug">
+        Three practices, one continuous argument for the brand.
+      </p>
+    </div>
+
+    <ul class="md:col-span-8 divide-y divide-white/[0.08] border-y border-white/[0.08]">
+      <li class="service-row flex items-center justify-between py-8 cursor-pointer">
+        <div class="flex items-baseline gap-8">
+          <span class="text-[10px] tracking-[0.3em] text-stone-600">01</span>
+          <span class="service-name font-serif-display italic text-5xl md:text-6xl text-stone-100">Design</span>
+        </div>
+        <div class="flex items-center gap-8">
+          <span class="hidden md:inline text-xs tracking-[0.25em] uppercase text-stone-500">Identity · Type · Web</span>
+          <svg class="service-arrow w-5 h-5 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </div>
+      </li>
+      <li class="service-row flex items-center justify-between py-8 cursor-pointer">
+        <div class="flex items-baseline gap-8">
+          <span class="text-[10px] tracking-[0.3em] text-stone-600">02</span>
+          <span class="service-name font-serif-display italic text-5xl md:text-6xl text-stone-100">Montage</span>
+        </div>
+        <div class="flex items-center gap-8">
+          <span class="hidden md:inline text-xs tracking-[0.25em] uppercase text-stone-500">Film · Motion · Edit</span>
+          <svg class="service-arrow w-5 h-5 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </div>
+      </li>
+      <li class="service-row flex items-center justify-between py-8 cursor-pointer">
+        <div class="flex items-baseline gap-8">
+          <span class="text-[10px] tracking-[0.3em] text-stone-600">03</span>
+          <span class="service-name font-serif-display italic text-5xl md:text-6xl text-stone-100">Strategy</span>
+        </div>
+        <div class="flex items-center gap-8">
+          <span class="hidden md:inline text-xs tracking-[0.25em] uppercase text-stone-500">Research · Positioning · Narrative</span>
+          <svg class="service-arrow w-5 h-5 text-stone-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="px-8 py-32 border-t border-white/[0.06] relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-brand-green/[0.08] via-transparent to-transparent pointer-events-none"></div>
+  <div class="max-w-[1100px] mx-auto relative">
+    <div class="text-xs tracking-[0.4em] uppercase text-stone-500 mb-8">§ Strategic Intake</div>
+    <h2 class="font-serif-display italic text-6xl md:text-7xl text-stone-50 mb-4 tracking-tight">Declare the gap.</h2>
+    <p class="text-stone-400 max-w-md mb-16">We respond to specificity. The clearer the market gap, the sharper our reply.</p>
+
+    <form onsubmit="event.preventDefault(); alert('Intake received. We respond within 72h.');" class="space-y-12">
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <label class="block text-[10px] tracking-[0.3em] uppercase text-stone-500 mb-4">Your Name</label>
+          <input type="text" placeholder="Full name" class="w-full bg-transparent border-b border-white/20 focus:border-brand-green pb-3 text-stone-100 placeholder-stone-600 outline-none transition" />
+        </div>
+        <div>
+          <label class="block text-[10px] tracking-[0.3em] uppercase text-stone-500 mb-4">Correspondence</label>
+          <input type="email" placeholder="email@domain.com" class="w-full bg-transparent border-b border-white/20 focus:border-brand-green pb-3 text-stone-100 placeholder-stone-600 outline-none transition" />
+        </div>
+        <div>
+          <label class="block text-[10px] tracking-[0.3em] uppercase text-stone-500 mb-4">Brand Name</label>
+          <input type="text" placeholder="The entity in question" class="w-full bg-transparent border-b border-white/20 focus:border-brand-green pb-3 text-stone-100 placeholder-stone-600 outline-none transition" />
+        </div>
+        <div>
+          <label class="block text-[10px] tracking-[0.3em] uppercase text-stone-500 mb-4">Founded / Stage</label>
+          <input type="text" placeholder="e.g. Seed · 2024" class="w-full bg-transparent border-b border-white/20 focus:border-brand-green pb-3 text-stone-100 placeholder-stone-600 outline-none transition" />
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-[10px] tracking-[0.3em] uppercase text-stone-500 mb-4">
+          Market Gap Identified <span class="text-brand-green ml-2">— required</span>
+        </label>
+        <textarea rows="5" required placeholder="Describe the unoccupied territory. What does the market refuse to see?"
+          class="font-serif-display italic w-full bg-transparent border-b border-white/20 focus:border-brand-green pb-4 text-stone-100 placeholder-stone-600 outline-none transition resize-none text-2xl leading-snug"></textarea>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-8 border-t border-white/[0.06]">
+        <span class="text-xs text-stone-600 tracking-[0.2em] uppercase">Replies within 72h · No automation</span>
+        <button type="submit" class="cta-btn group inline-flex items-center gap-3 px-8 py-4 bg-brand-green text-stone-50 hover:bg-brand-green/80 transition text-xs tracking-[0.3em] uppercase">
+          Submit Intake
+          <svg class="cta-arrow w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="px-8 py-12 border-t border-white/[0.06]">
+  <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] tracking-[0.3em] uppercase text-stone-600">
+    <span>© MMXXVI Alter HUB — A Studio of Provenance</span>
+    <span>Designed in restraint. Delivered with intent.</span>
+  </div>
+</footer>
+
+</body>
+</html>
