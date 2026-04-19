@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Menu, X, Sparkles, Zap, Orbit, Layers } from 'lucide-react';
 
+// --- Consolidated Content Configuration ---
 const CONTENT = {
   brand: { name: 'ALTER', sub: 'HUB' },
   nav: [
@@ -34,57 +35,19 @@ const CONTENT = {
     { value: '14', label: 'Industry Awards' },
     { value: '9', label: 'Countries' },
     { value: '∞', label: 'Iterations' },
-  import { motion } from 'framer-motion';
-
-const footerData = {
-  email: 'alterhub.me@gmail.com',
-  socials: [
-    { name: 'Instagram', url: 'https://instagram.com/alterhub.us' },
-    { name: 'Dribbble', url: 'https://dribbble.com/alterhub' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/company/alterhub' },
-    { name: 'Are.na', url: 'https://are.na/alter-hub' },
   ],
+  footer: {
+    email: 'alterhub.me@gmail.com',
+    socials: [
+      { name: 'Instagram', url: 'https://instagram.com/alterhub.us' },
+      { name: 'Dribbble', url: 'https://dribbble.com/alterhub' },
+      { name: 'LinkedIn', url: 'https://linkedin.com/company/alterhub' },
+      { name: 'Are.na', url: 'https://are.na/alter-hub' },
+    ],
+  },
 };
 
-const Footer = () => {
-  return (
-    <footer className="py-20 border-t border-emerald-900/30 bg-black">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start">
-        
-        {/* Contact Info */}
-        <div className="mb-10 md:mb-0">
-          <p className="text-xs uppercase tracking-[0.3em] text-emerald-500 mb-4">Inquiries</p>
-          <a 
-            href={`mailto:${footerData.email}`} 
-            className="text-2xl font-light text-white hover:text-emerald-400 transition-colors duration-300"
-          >
-            {footerData.email}
-          </a>
-        </div>
-
-        {/* Social Links */}
-        <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-emerald-500 mb-4">Connect</p>
-          <ul className="flex flex-col gap-2">
-            {footerData.socials.map((social) => (
-              <motion.li key={social.name} whileHover={{ x: 5 }}>
-                <a
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors duration-200 font-mono text-sm uppercase tracking-widest"
-                >
-                  {social.name}
-                </a>
-              </motion.li>
-            ))}
-          </ul>
-        </div>
-        
-      </div>
-    </footer>
-  );
-};
+// --- Custom Components ---
 
 function CustomCursor() {
   const cursorX = useMotionValue(-100);
@@ -148,7 +111,7 @@ function Navbar() {
         <div className="glass-strong rounded-full px-5 md:px-8 py-3 md:py-4 flex items-center justify-between">
           <a href="#" className="flex items-center gap-1.5">
             <div className="w-2 h-2 rounded-full bg-emerald-glow animate-pulse" />
-            <span className="font-display font-bold text-sm md:text-base tracking-tight">
+            <span className="font-display font-bold text-sm md:text-base tracking-tight text-white">
               {CONTENT.brand.name}
               <span className="text-emerald-glow">/</span>
               {CONTENT.brand.sub}
@@ -186,7 +149,7 @@ function Navbar() {
           >
             <div className="flex flex-col gap-4">
               {CONTENT.nav.map((link) => (
-                <a key={link.label} href={link.href} onClick={() => setOpen(false)} className="text-lg font-medium">
+                <a key={link.label} href={link.href} onClick={() => setOpen(false)} className="text-lg font-medium text-white">
                   {link.label}
                 </a>
               ))}
@@ -223,7 +186,7 @@ function HubVisual() {
     <motion.div
       ref={ref}
       style={{ rotateX, rotateY, transformPerspective: 1000 }}
-      className="relative w-[320px] h-[320px] md:w-[520px] md:h-[520px] hub-glow"
+      className="relative w-[320px] h-[320px] md:w-[520px] md:h-[520px]"
     >
       <motion.svg
         viewBox="0 0 500 500"
@@ -242,33 +205,10 @@ function HubVisual() {
             <stop offset="100%" stopColor="#064E3B" />
           </linearGradient>
         </defs>
-
         <circle cx="250" cy="250" r="240" fill="none" stroke="url(#ring)" strokeWidth="0.5" strokeDasharray="2 8" opacity="0.4" />
         <circle cx="250" cy="250" r="200" fill="none" stroke="url(#ring)" strokeWidth="1" opacity="0.3" />
         <circle cx="250" cy="250" r="160" fill="none" stroke="#10D9A3" strokeWidth="0.5" strokeDasharray="1 4" opacity="0.5" />
       </motion.svg>
-
-      <motion.svg
-        viewBox="0 0 500 500"
-        className="absolute inset-0 w-full h-full"
-        animate={{ rotate: -360 }}
-        transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-      >
-        {[...Array(8)].map((_, i) => {
-          const angle = (i * 45 * Math.PI) / 180;
-          const x = 250 + Math.cos(angle) * 200;
-          const y = 250 + Math.sin(angle) * 200;
-          return (
-            <g key={i}>
-              <line x1="250" y1="250" x2={x} y2={y} stroke="#10D9A3" strokeWidth="0.5" opacity="0.2" />
-              <circle cx={x} cy={y} r="4" fill="#10D9A3">
-                <animate attributeName="opacity" values="0.3;1;0.3" dur={`${2 + i * 0.3}s`} repeatCount="indefinite" />
-              </circle>
-            </g>
-          );
-        })}
-      </motion.svg>
-
       <motion.div
         animate={{ scale: [1, 1.08, 1] }}
         transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
@@ -280,7 +220,7 @@ function HubVisual() {
           <circle cx="100" cy="100" r="20" fill="#10D9A3" opacity="0.9">
             <animate attributeName="r" values="18;24;18" dur="2s" repeatCount="indefinite" />
           </circle>
-          <text x="100" y="105" textAnchor="middle" fill="#05080A" fontSize="10" fontFamily="JetBrains Mono" fontWeight="600">
+          <text x="100" y="105" textAnchor="middle" fill="#05080A" fontSize="10" fontFamily="monospace" fontWeight="600">
             HUB
           </text>
         </svg>
@@ -291,141 +231,46 @@ function HubVisual() {
 
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden grid-bg">
-      <div className="absolute top-1/4 -left-40 w-96 h-96 rounded-full bg-emerald-glow/10 blur-[120px]" />
-      <div className="absolute bottom-1/4 -right-40 w-96 h-96 rounded-full bg-emerald-deep/30 blur-[120px]" />
-
+    <section className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
       <div className="relative max-w-7xl mx-auto w-full px-6 md:px-10 grid md:grid-cols-12 gap-8 items-center">
         <div className="md:col-span-7 z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mono-tag mb-6 flex items-center gap-2"
-          >
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6 flex items-center gap-2 text-xs font-mono text-emerald-glow">
             <span className="w-6 h-px bg-emerald-glow" />
             {CONTENT.hero.tag}
           </motion.div>
-
-          <h1 className="font-display font-bold text-[clamp(3rem,9vw,8rem)] leading-[0.9] kerning-wide glow-text">
-            {CONTENT.hero.title.map((line, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.2 + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="block"
-              >
-                {i === 1 ? (
-                  <>
-                    the <span className="italic font-light text-emerald-glow">noise</span>.
-                  </>
-                ) : (
-                  line
-                )}
-              </motion.span>
-            ))}
+          <h1 className="font-bold text-6xl md:text-8xl leading-[0.9] tracking-tighter text-white">
+            {CONTENT.hero.title[0]} <br />
+            <span className="italic font-light text-emerald-glow">the noise.</span>
           </h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.7 }}
-            className="mt-8 max-w-xl text-lg md:text-xl text-white/60 leading-relaxed"
-          >
+          <p className="mt-8 max-w-xl text-lg text-white/60 leading-relaxed">
             {CONTENT.hero.subtitle}
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="mt-10 flex flex-col sm:flex-row gap-4 items-start sm:items-center"
-          >
-            <a
-              href={CONTENT.hero.ctaHref}
-              className="liquid-btn group inline-flex items-center gap-3 bg-emerald-glow text-slate-void font-mono text-sm uppercase tracking-widest px-8 py-4 rounded-full border border-emerald-glow font-semibold"
-            >
-              {CONTENT.hero.cta}
-              <ArrowUpRight size={18} className="transition-transform group-hover:rotate-45" />
+          </p>
+          <div className="mt-10 flex gap-4">
+            <a href={CONTENT.hero.ctaHref} className="bg-emerald-glow text-black px-8 py-4 rounded-full font-bold flex items-center gap-2">
+              {CONTENT.hero.cta} <ArrowUpRight size={18} />
             </a>
-            <a href="#work" className="magnetic-link font-mono text-xs uppercase tracking-widest text-white/70 px-4 py-2">
-              View Selected Work ↓
-            </a>
-          </motion.div>
+          </div>
         </div>
-
-        <div className="md:col-span-5 flex justify-center items-center relative">
+        <div className="md:col-span-5 flex justify-center relative">
           <HubVisual />
         </div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-8 left-6 md:left-10 mono-tag flex items-center gap-2"
-      >
-        <div className="w-px h-8 bg-emerald-glow/50" />
-        SCROLL TO EXPLORE
-      </motion.div>
     </section>
-  );
-}
-
-function FadeInSection({ children, className = '', delay = 0 }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-100px' }}
-      transition={{ duration: 0.9, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
-    >
-      {children}
-    </motion.div>
   );
 }
 
 function Services() {
   return (
-    <section id="services" className="relative py-32 md:py-48 px-6 md:px-10">
+    <section id="services" className="py-32 px-6 md:px-10">
       <div className="max-w-7xl mx-auto">
-        <FadeInSection className="mb-20 grid md:grid-cols-12 gap-8 items-end">
-          <div className="md:col-span-5">
-            <div className="mono-tag mb-4">/ 001 — CAPABILITIES</div>
-            <h2 className="font-display font-bold text-5xl md:text-7xl kerning-wide leading-[0.95]">
-              Four disciplines.<br />
-              <span className="italic font-light text-emerald-glow">One hub.</span>
-            </h2>
-          </div>
-          <p className="md:col-span-5 md:col-start-8 text-white/60 text-lg leading-relaxed">
-            We operate as a connected system — strategy, design, and technology synthesized into outcomes you can measure.
-          </p>
-        </FadeInSection>
-
-        <div className="grid md:grid-cols-2 gap-4 md:gap-6">
-          {CONTENT.services.map((service, i) => (
-            <FadeInSection key={service.id} delay={i * 0.1}>
-              <motion.div
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.4 }}
-                className={`glass rounded-3xl p-8 md:p-10 h-full group cursor-pointer ${
-                  i % 3 === 0 ? 'md:translate-y-8' : ''
-                }`}
-                data-cursor="hover"
-              >
-                <div className="flex items-start justify-between mb-12">
-                  <service.icon className="text-emerald-glow" size={32} strokeWidth={1.2} />
-                  <span className="mono-tag">{service.id}</span>
-                </div>
-                <h3 className="font-display font-semibold text-3xl md:text-4xl mb-4 kerning-wide">{service.title}</h3>
-                <p className="text-white/50 leading-relaxed">{service.desc}</p>
-                <div className="mt-8 flex items-center gap-2 text-emerald-glow font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  Explore <ArrowUpRight size={14} />
-                </div>
-              </motion.div>
-            </FadeInSection>
+        <h2 className="text-4xl md:text-6xl font-bold mb-20 text-white">Capabilities</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {CONTENT.services.map((s) => (
+            <div key={s.id} className="p-10 rounded-3xl bg-white/5 border border-white/10 hover:border-emerald-glow/50 transition-colors">
+              <s.icon className="text-emerald-glow mb-6" size={32} />
+              <h3 className="text-2xl font-bold mb-4 text-white">{s.title}</h3>
+              <p className="text-white/50">{s.desc}</p>
+            </div>
           ))}
         </div>
       </div>
@@ -435,53 +280,18 @@ function Services() {
 
 function Portfolio() {
   return (
-    <section id="work" className="relative py-32 md:py-48 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto">
-        <FadeInSection className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div>
-            <div className="mono-tag mb-4">/ 002 — SELECTED WORK</div>
-            <h2 className="font-display font-bold text-5xl md:text-7xl kerning-wide leading-[0.95]">
-              Recent <span className="italic font-light text-emerald-glow">signals</span>.
-            </h2>
-          </div>
-          <a href="#contact" className="magnetic-link mono-tag">View All Case Studies →</a>
-        </FadeInSection>
-
-        <div className="grid md:grid-cols-2 gap-6 md:gap-10">
-          {CONTENT.portfolio.map((item, i) => (
-            <FadeInSection key={item.id} delay={i * 0.08} className={i % 2 === 1 ? 'md:translate-y-16' : ''}>
-              <motion.a
-                href="#"
-                whileHover="hover"
-                className="block group cursor-pointer"
-                data-cursor="hover"
-              >
-                <div className="relative overflow-hidden rounded-2xl aspect-[4/5] mb-5 glass">
-                  <motion.img
-                    src={item.image}
-                    alt={item.client}
-                    variants={{ hover: { scale: 1.08 } }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                    className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-void via-transparent to-transparent" />
-                  <motion.div
-                    variants={{ hover: { opacity: 1, y: 0 } }}
-                    initial={{ opacity: 0, y: 20 }}
-                    className="absolute bottom-6 right-6 w-12 h-12 rounded-full bg-emerald-glow flex items-center justify-center"
-                  >
-                    <ArrowUpRight className="text-slate-void" size={20} />
-                  </motion.div>
-                </div>
-                <div className="flex items-end justify-between gap-4">
-                  <div>
-                    <div className="mono-tag mb-1">{item.category} · {item.year}</div>
-                    <h3 className="font-display font-semibold text-2xl md:text-3xl kerning-wide">{item.client}</h3>
-                  </div>
-                  <span className="mono-tag text-white/40">{item.id}</span>
-                </div>
-              </motion.a>
-            </FadeInSection>
+    <section id="work" className="py-32 px-6 md:px-10 bg-black/50">
+      <div className="max-w-7xl mx-auto text-white">
+        <h2 className="text-4xl md:text-6xl font-bold mb-20">Selected Work</h2>
+        <div className="grid md:grid-cols-2 gap-10">
+          {CONTENT.portfolio.map((item) => (
+            <div key={item.id} className="group cursor-pointer">
+              <div className="overflow-hidden rounded-2xl aspect-video mb-6">
+                <img src={item.image} alt={item.client} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              </div>
+              <h3 className="text-2xl font-bold">{item.client}</h3>
+              <p className="text-emerald-glow text-sm uppercase tracking-widest">{item.category}</p>
+            </div>
           ))}
         </div>
       </div>
@@ -491,70 +301,14 @@ function Portfolio() {
 
 function Stats() {
   return (
-    <section id="studio" className="relative py-32 md:py-48 px-6 md:px-10 overflow-hidden">
-      <div className="absolute inset-0 grid-bg opacity-40" />
-      <div className="relative max-w-7xl mx-auto">
-        <FadeInSection className="mb-20">
-          <div className="mono-tag mb-4">/ 003 — THE STUDIO</div>
-          <h2 className="font-display font-bold text-5xl md:text-7xl kerning-wide leading-[0.95] max-w-4xl">
-            A small team with a <span className="italic font-light text-emerald-glow">long memory</span>.
-          </h2>
-        </FadeInSection>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-emerald-glow/10 rounded-2xl overflow-hidden glass">
-          {CONTENT.stats.map((stat, i) => (
-            <FadeInSection key={i} delay={i * 0.1}>
-              <div className="bg-slate-void/80 p-8 md:p-10 h-full">
-                <div className="font-display font-bold text-5xl md:text-6xl kerning-wide text-emerald-glow mb-3">
-                  {stat.value}
-                </div>
-                <div className="mono-tag text-white/60">{stat.label}</div>
-              </div>
-            </FadeInSection>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CTA() {
-  return (
-    <section id="contact" className="relative py-32 md:py-48 px-6 md:px-10">
-      <div className="max-w-5xl mx-auto">
-        <FadeInSection>
-          <div className="relative glass-strong rounded-[2rem] p-10 md:p-20 overflow-hidden">
-            <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-emerald-glow/20 blur-[100px]" />
-            <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full bg-emerald-deep/40 blur-[100px]" />
-
-            <div className="relative text-center">
-              <div className="mono-tag mb-6">/ 004 — START A PROJECT</div>
-              <h2 className="font-display font-bold text-5xl md:text-8xl kerning-wide leading-[0.95] mb-8">
-                Let's build<br />
-                <span className="italic font-light text-emerald-glow">something that lasts</span>.
-              </h2>
-              <p className="text-white/60 text-lg md:text-xl max-w-2xl mx-auto mb-12">
-                Briefs open for Q2 2026. Tell us what you're building — we'll reply within 48 hours.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a
-                  href={`mailto:${CONTENT.footer.email}`}
-                  className="liquid-btn group inline-flex items-center gap-3 bg-emerald-glow text-slate-void font-mono text-sm uppercase tracking-widest px-10 py-5 rounded-full border border-emerald-glow font-semibold"
-                >
-                  Start the Conversation
-                  <ArrowUpRight size={18} className="transition-transform group-hover:rotate-45" />
-                </a>
-                <a
-                  href={`mailto:${CONTENT.footer.email}`}
-                  className="magnetic-link font-mono text-sm text-white/70 tracking-wide"
-                >
-                  {CONTENT.footer.email}
-                </a>
-              </div>
-            </div>
+    <section id="studio" className="py-32 px-6 md:px-10 bg-black">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+        {CONTENT.stats.map((stat, i) => (
+          <div key={i} className="text-center">
+            <div className="text-5xl font-bold text-emerald-glow mb-2">{stat.value}</div>
+            <div className="text-white/40 text-xs uppercase tracking-widest">{stat.label}</div>
           </div>
-        </FadeInSection>
+        ))}
       </div>
     </section>
   );
@@ -562,21 +316,25 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="border-t border-emerald-glow/10 py-12 px-6 md:px-10">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-8 items-center">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-emerald-glow animate-pulse" />
-          <span className="font-display font-bold text-sm tracking-tight">
-            {CONTENT.brand.name}<span className="text-emerald-glow">/</span>{CONTENT.brand.sub}
-          </span>
+    <footer className="py-20 border-t border-emerald-900/30 bg-black text-white px-6">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+        <div>
+          <p className="text-xs uppercase tracking-[0.3em] text-emerald-500 mb-4">Inquiries</p>
+          <a href={`mailto:${CONTENT.footer.email}`} className="text-2xl font-light hover:text-emerald-400 transition-colors">
+            {CONTENT.footer.email}
+          </a>
         </div>
-        <div className="flex gap-6 justify-center">
-          {CONTENT.footer.socials.map((s) => (
-            <a key={s} href="#" className="magnetic-link mono-tag">{s}</a>
-          ))}
-        </div>
-        <div className="mono-tag text-white/40 md:text-right">
-          © 2026 ALTER/HUB · ALL SYSTEMS NOMINAL
+        <div>
+          <p className="text-xs uppercase tracking-[0.3em] text-emerald-500 mb-4">Connect</p>
+          <ul className="flex flex-col gap-2">
+            {CONTENT.footer.socials.map((social) => (
+              <motion.li key={social.name} whileHover={{ x: 5 }}>
+                <a href={social.url} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white font-mono text-sm uppercase">
+                  {social.name}
+                </a>
+              </motion.li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>
@@ -585,19 +343,14 @@ function Footer() {
 
 export default function App() {
   return (
-    <div className="relative min-h-screen bg-slate-void text-white noise">
+    <div className="bg-[#05080A] min-h-screen">
       <CustomCursor />
       <Navbar />
       <main>
         <Hero />
-        <div className="section-divider" />
         <Services />
-        <div className="section-divider" />
         <Portfolio />
-        <div className="section-divider" />
         <Stats />
-        <div className="section-divider" />
-        <CTA />
       </main>
       <Footer />
     </div>
