@@ -4,23 +4,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        emerald: {
-          glow: '#10D9A3',
-          deep: '#064E3B',
-          abyss: '#022C22',
-        },
-        slate: {
-          ink: '#0A0F0D',
-          void: '#05080A',
-        },
+        midnight: '#08101C',
+        ink: '#142236',
+        ember: '#D4A855',
+        champagne: '#F4D98A',
+        bone: '#EDE3CC',
       },
       fontFamily: {
-        display: ['"Space Grotesk"', 'sans-serif'],
+        display: ['"Cormorant Garamond"', '"Times New Roman"', 'serif'],
+        body: ['"Inter"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
-      },
-      animation: {
-        'pulse-slow': 'pulse 4s ease-in-out infinite',
-        'spin-slow': 'spin 20s linear infinite',
       },
     },
   },
