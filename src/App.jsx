@@ -34,11 +34,56 @@ const CONTENT = {
     { value: '14', label: 'Industry Awards' },
     { value: '9', label: 'Countries' },
     { value: '∞', label: 'Iterations' },
+  import { motion } from 'framer-motion';
+
+const footerData = {
+  email: 'alterhub.me@gmail.com',
+  socials: [
+    { name: 'Instagram', url: 'https://instagram.com/alterhub.us' },
+    { name: 'Dribbble', url: 'https://dribbble.com/alterhub' },
+    { name: 'LinkedIn', url: 'https://linkedin.com/company/alterhub' },
+    { name: 'Are.na', url: 'https://are.na/alter-hub' },
   ],
-  footer: {
-    email: 'hello@alterhub.studio',
-    socials: ['Instagram', 'Dribbble', 'LinkedIn', 'Are.na'],
-  },
+};
+
+const Footer = () => {
+  return (
+    <footer className="py-20 border-t border-emerald-900/30 bg-black">
+      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-start">
+        
+        {/* Contact Info */}
+        <div className="mb-10 md:mb-0">
+          <p className="text-xs uppercase tracking-[0.3em] text-emerald-500 mb-4">Inquiries</p>
+          <a 
+            href={`mailto:${footerData.email}`} 
+            className="text-2xl font-light text-white hover:text-emerald-400 transition-colors duration-300"
+          >
+            {footerData.email}
+          </a>
+        </div>
+
+        {/* Social Links */}
+        <div>
+          <p className="text-xs uppercase tracking-[0.3em] text-emerald-500 mb-4">Connect</p>
+          <ul className="flex flex-col gap-2">
+            {footerData.socials.map((social) => (
+              <motion.li key={social.name} whileHover={{ x: 5 }}>
+                <a
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors duration-200 font-mono text-sm uppercase tracking-widest"
+                >
+                  {social.name}
+                </a>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
+        
+      </div>
+    </footer>
+  );
 };
 
 function CustomCursor() {
