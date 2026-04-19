@@ -3,12 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --glow: #10d9a3;
-  --glow-soft: #34d399;
-  --deep: #064e3b;
-  --abyss: #022c22;
-  --ink: #0a0f0d;
-  --void: #05080a;
+  --midnight: #08101C;
+  --ink: #142236;
+  --ember: #D4A855;
+  --champagne: #F4D98A;
+  --bone: #EDE3CC;
 }
 
 * {
@@ -21,9 +20,9 @@ html {
 }
 
 body {
-  background: var(--void);
-  color: #e5f4ef;
-  font-family: 'Space Grotesk', sans-serif;
+  background: var(--midnight);
+  color: var(--bone);
+  font-family: 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
   cursor: none;
 }
@@ -35,47 +34,47 @@ body {
 }
 
 ::selection {
-  background: var(--glow);
-  color: var(--void);
+  background: var(--ember);
+  color: var(--midnight);
 }
 
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--void);
+  background: var(--midnight);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--deep);
+  background: var(--ink);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--glow);
+  background: var(--ember);
 }
 
 .glass {
-  background: rgba(6, 78, 59, 0.08);
+  background: rgba(20, 34, 54, 0.4);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(16, 217, 163, 0.12);
+  border: 1px solid rgba(212, 168, 85, 0.12);
 }
 
 .glass-strong {
-  background: rgba(5, 8, 10, 0.6);
+  background: rgba(8, 16, 28, 0.7);
   backdrop-filter: blur(24px) saturate(200%);
   -webkit-backdrop-filter: blur(24px) saturate(200%);
-  border: 1px solid rgba(16, 217, 163, 0.15);
+  border: 1px solid rgba(212, 168, 85, 0.18);
 }
 
 .glow-text {
-  text-shadow: 0 0 40px rgba(16, 217, 163, 0.3);
+  text-shadow: 0 0 60px rgba(212, 168, 85, 0.25);
 }
 
 .grid-bg {
   background-image:
-    linear-gradient(rgba(16, 217, 163, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(16, 217, 163, 0.04) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(212, 168, 85, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 168, 85, 0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
 }
 
 .noise::before {
@@ -83,7 +82,7 @@ body {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.035;
+  opacity: 0.04;
   z-index: 1;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
@@ -97,7 +96,7 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--glow);
+  background: var(--ember);
   transform: translateY(100%);
   transition: transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
   z-index: -1;
@@ -106,8 +105,8 @@ body {
   transform: translateY(0);
 }
 .liquid-btn:hover {
-  color: var(--void);
-  border-color: var(--glow);
+  color: var(--midnight);
+  border-color: var(--ember);
 }
 
 .magnetic-link {
@@ -122,7 +121,7 @@ body {
   left: 0;
   width: 100%;
   height: 1px;
-  background: var(--glow);
+  background: var(--ember);
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
@@ -132,27 +131,40 @@ body {
   transform-origin: left;
 }
 .magnetic-link:hover {
-  color: var(--glow);
+  color: var(--ember);
 }
 
-.hub-glow {
-  filter: drop-shadow(0 0 20px rgba(16, 217, 163, 0.4))
-          drop-shadow(0 0 60px rgba(16, 217, 163, 0.2));
+.sun-glow {
+  filter: drop-shadow(0 0 40px rgba(212, 168, 85, 0.35))
+          drop-shadow(0 0 100px rgba(212, 168, 85, 0.15));
 }
 
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(16, 217, 163, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 168, 85, 0.25), transparent);
 }
 
-.kerning-wide {
-  letter-spacing: -0.03em;
+.serif-display {
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  letter-spacing: 0.02em;
+  font-weight: 400;
+}
+
+.wide-track {
+  letter-spacing: 0.28em;
 }
 
 .mono-tag {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.7rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--glow);
+  color: var(--ember);
+}
+
+.editorial-italic {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--champagne);
 }
